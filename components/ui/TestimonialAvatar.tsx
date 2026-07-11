@@ -16,7 +16,7 @@ export default function TestimonialAvatar({ image, active }: TestimonialAvatarPr
                 className={`relative w-20 h-20 rounded-full overflow-hidden ${active ? "outline outline-4 outline-[#B82B2D] outline-offset-[-2px]" : ""
                     }`}
             >
-                <Image src={image} alt="" fill className="object-cover" />
+                <Image src={image} alt="" sizes="80px" fill className="object-cover" />
             </div>
         </div>
     );

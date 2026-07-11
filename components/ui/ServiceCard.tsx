@@ -15,7 +15,7 @@ export default function ServiceCard({ title, description, image, imagePosition }
 
     const imageBlock = (
         <div className="relative w-full flex-1 rounded-lg overflow-hidden">
-            <Image src={image} alt={title} fill className="object-cover" />
+            <Image src={image} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" alt={title} fill className="object-cover" />
         </div>
     );
 
