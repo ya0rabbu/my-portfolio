@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Badge from "@/components/ui/Badge";
-import TestimonialAvatar from "@/components/ui/TestimonialAvatar";
 import { testimonialsContent } from "@/data/content";
+import TestimonialAvatar from "@/components/ui/TestimonialAvatar";
 
 // Testimonials section: client feedback with quote card and avatar list
 export default function TestimonialsSection() {
@@ -14,7 +14,7 @@ export default function TestimonialsSection() {
             <div className="absolute inset-0 -z-10">
                 <div className="absolute inset-0 bg-[#F6F4F2]" />
                 <Image
-                    src="/assets/images/testimonials-bg-landscape.png"
+                    src="/assets/images/Story-bg.png"
                     alt=""
                     fill
                     className="object-cover"
@@ -78,13 +78,13 @@ export default function TestimonialsSection() {
 
                     <div className="relative z-10 p-8 md:p-[33px] flex flex-col md:flex-row items-center justify-between gap-8">
                         {/* Quote text */}
-                        <div className="w-full md:max-w-[700px] flex flex-col items-start gap-8">
+                        <div className="w-full md:max-w-[700px] flex flex-col items-start gap-8 pt-12">
                             <p className="text-left">
-                                <span className="text-[#CD3234] text-[60px] md:text-[100px] font-bold font-cabinet leading-[100px] md:leading-[160px]">
+                                <span className="text-[#CD3234] text-[60px] md:text-[100px] font-bold font-cabinet leading-[0] block">
                                     &ldquo;
                                 </span>
                                 <span className="text-[#161616] text-2xl md:text-[36px] font-bold font-cabinet leading-snug md:leading-[57.6px]">
-                                    {testimonialsContent.quote.text}
+                                    {" "}{testimonialsContent.quote.text}
                                 </span>
                                 <span className="text-[#70712C] text-2xl md:text-[36px] font-bold font-cabinet leading-snug md:leading-[57.6px]">
                                     {testimonialsContent.quote.highlight}

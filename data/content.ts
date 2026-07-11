@@ -149,7 +149,7 @@ export const testimonialsContent = {
         "Real feedback from people I've worked with across product, design, and collaborative problem-solving. Because good design should not only look right — it should feel right to work through.",
     quote: {
         symbol: "&lsquo;",
-        text: "Working with Yasir felt structured from day one. ",
+        text: "   Working with Yasir felt structured from day one. ",
         highlight: "He thinks deeply",
         rest: ", communicates clearly, and designs with both users and business goals in mind.",
     },
