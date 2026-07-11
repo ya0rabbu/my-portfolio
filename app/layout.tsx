@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Urbanist } from "next/font/google";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -18,7 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={urbanist.variable}>
-      <body className="font-urbanist antialiased bg-[#F6F4F2]">{children}</body>
+      <body className="font-urbanist antialiased bg-[#F6F4F2]" suppressHydrationWarning>
+        <CustomCursor />
+        {children}
+      </body>
     </html>
   );
 }

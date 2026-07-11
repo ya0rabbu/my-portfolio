@@ -10,7 +10,7 @@ import { heroContent } from "@/data/content";
 // Hero section: intro headline, value proposition, and primary CTAs
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section id="hero" className="relative min-h-screen overflow-hidden">
       {/* Full-bleed background landscape image */}
       <Image
         src="/assets/images/hero-bg-landscape.png"

@@ -1,5 +1,8 @@
 // ============================================
 // HERO SECTION
+
+import { symbol } from "framer-motion/client";
+
 // ============================================
 export const heroContent = {
     badge: {
@@ -146,6 +149,7 @@ export const testimonialsContent = {
     subtext:
         "Real feedback from people I've worked with across product, design, and collaborative problem-solving. Because good design should not only look right — it should feel right to work through.",
     quote: {
+        symbol: "&lsquo;",
         text: "Working with Yasir felt structured from day one. ",
         highlight: "He thinks deeply",
         rest: ", communicates clearly, and designs with both users and business goals in mind.",
@@ -157,6 +161,13 @@ export const testimonialsContent = {
         { image: "/assets/images/avatar-testimonial-3.jpg", active: false },
     ],
     background: {
-        image: "/assets/images/testimonials-bg-landscape.png",
+        image: "/assets/images/testimonials-grass-strip.png",
     },
 };
+
+export const sectionNavItems: sectionNavItems[] = [
+    { id: "hero", label: "Home" },
+    { id: "about", label: "Who I Am" },
+    { id: "services", label: "What I Do" },
+    { id: "testimonials", label: "What I Bring" },
+];

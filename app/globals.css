@@ -16,3 +16,9 @@
   --color-accent-olive: #70712C;
   --color-bg-cream: #F3EDE3;
 }
+
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}

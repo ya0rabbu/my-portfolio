@@ -8,7 +8,7 @@ import { Icon } from "lucide-react";
 // About section: designer bio, stats, and portrait
 export default function AboutSection() {
     return (
-        <section className="relative w-full overflow-hidden">
+        <section id="about" className="relative w-full overflow-hidden">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}

@@ -39,3 +39,6 @@ export default function Button({ label, variant, href, onClick }: ButtonProps) {
         </button>
     );
 }
+<button data-cursor-hover data-cursor-label="Click">
+    View Selected Work
+</button>

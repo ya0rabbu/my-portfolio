@@ -9,7 +9,7 @@ import { testimonialsContent } from "@/data/content";
 // Testimonials section: client feedback with quote card and avatar list
 export default function TestimonialsSection() {
     return (
-        <section className="relative w-full overflow-hidden px-5">
+        <section id="testimonials" className="relative w-full overflow-hidden px-5">
             {/* Background image - grass/nature theme, bleeds slightly above top edge */}
             <div className="absolute inset-0 -z-10">
                 <div className="absolute inset-0 bg-[#F6F4F2]" />

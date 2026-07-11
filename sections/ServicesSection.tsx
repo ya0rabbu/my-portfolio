@@ -9,7 +9,7 @@ import { servicesContent } from "@/data/content";
 export default function ServicesSection() {
     return (
         <div className="w-full px-5">
-            <section className="w-full bg-[#F8FAFB] border border-[#E7E1DD] px-6 md:px-[150px] py-16 md:py-24 rounded-[20px] max-w-[1880px] mx-auto">
+            <section id="services" className="w-full bg-[#F8FAFB] border border-[#E7E1DD] px-6 md:px-[150px] py-16 md:py-24 rounded-[20px] max-w-[1880px] mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}

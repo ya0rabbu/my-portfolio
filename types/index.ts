@@ -28,3 +28,7 @@ export interface TestimonialAvatarProps {
     image: string;
     active: boolean;
 }
+export interface SectionNavItem {
+    id: string;
+    label: string;
+}
