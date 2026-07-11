@@ -26,7 +26,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className="relative z-10 w-full max-w-[1150px] mx-auto flex flex-col items-center gap-14 px-4 pt-[120px] md:pt-[245px] pb-[80px] md:pb-[327px] text-center"
+        className="relative z-10 w-full max-w-[1150px] mx-auto flex flex-col items-center gap-14 px-4 pt-[120px] md:pt-[100px] pb-[80px] md:pb-[327px] text-center"
       >
         <div className="flex flex-col items-center gap-5">
           <Badge icon={heroContent.badge.icon} label={heroContent.badge.label} />
