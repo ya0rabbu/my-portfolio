@@ -1,8 +1,7 @@
+import { SectionNavItem } from "@/types";
+
 // ============================================
 // HERO SECTION
-
-import { symbol } from "framer-motion/client";
-
 // ============================================
 export const heroContent = {
     badge: {
@@ -165,7 +164,7 @@ export const testimonialsContent = {
     },
 };
 
-export const sectionNavItems: sectionNavItems[] = [
+export const sectionNavItems: SectionNavItem[] = [
     { id: "hero", label: "Home" },
     { id: "about", label: "Who I Am" },
     { id: "services", label: "What I Do" },
