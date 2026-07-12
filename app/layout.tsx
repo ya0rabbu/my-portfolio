@@ -1,6 +1,8 @@
 import "./globals.css";
 import { Urbanist } from "next/font/google";
 import CustomCursor from "@/components/ui/CustomCursor";
+// NOTE: make sure CustomCursor.tsx (the dot+ring component from earlier)
+// actually exists at components/ui/CustomCursor.tsx
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -19,7 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={urbanist.variable}>
-      <body className="font-urbanist antialiased bg-[#F6F4F2]" suppressHydrationWarning>
+      <body
+        className="font-urbanist antialiased bg-[#F6F4F2] cursor-none"
+        suppressHydrationWarning
+      >
         <CustomCursor />
         {children}
       </body>

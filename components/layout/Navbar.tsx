@@ -6,10 +6,10 @@ export default function Navbar() {
             <div className="w-full flex items-center justify-between">
                 <Image
                     src="/assets/icons/icon-logo-yar.svg"
-                    alt="YAR Logo"
-                    width={114.4}
+                    alt="YAR"
+                    width={114}
                     height={64}
-                    priority
+                    style={{ height: "auto" }}
                 />
                 <button
                     aria-label="Open menu"
@@ -20,6 +20,7 @@ export default function Navbar() {
                         alt=""
                         width={64}
                         height={64}
+                        style={{ height: "auto" }}
                     />
                 </button>
             </div>

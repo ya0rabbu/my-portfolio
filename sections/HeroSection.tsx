@@ -17,6 +17,7 @@ export default function HeroSection() {
         alt=""
         fill
         priority
+        sizes="100vw"
         className="object-cover -z-10"
       />
 
@@ -63,7 +64,7 @@ export default function HeroSection() {
       </motion.div>
 
       {/* Smooth fade transition to next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 md:h-64 bg-gradient-to-b from-transparent via-[#F6F4F2]/20 to-[#F6F4F2] z-10 pointer-events-none" />
-    </section>
+      <div className="absolute bottom-0 left-0 right-0 h-16 md:h-24 bg-gradient-to-b from-transparent via-[#F6F4F2]/20 to-[#F6F4F2] z-10 pointer-events-none" /></section>
+
   );
 }

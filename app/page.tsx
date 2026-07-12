@@ -4,6 +4,7 @@ import HeroSection from "@/sections/HeroSection";
 import AboutSection from "@/sections/AboutSection";
 import ServicesSection from "@/sections/ServicesSection";
 import TestimonialsSection from "@/sections/TestimonialsSection";
+import ProjectsSection from "@/sections/ProjectsSection";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <AboutSection />
         <ServicesSection />
         <TestimonialsSection />
+        <ProjectsSection />
       </main>
     </SplashScreen>
   );

@@ -147,17 +147,46 @@ export const testimonialsContent = {
     },
     subtext:
         "Real feedback from people I've worked with across product, design, and collaborative problem-solving. Because good design should not only look right — it should feel right to work through.",
-    quote: {
-        symbol: "&lsquo;",
-        text: "   Working with Yasir felt structured from day one. ",
-        highlight: "He thinks deeply",
-        rest: ", communicates clearly, and designs with both users and business goals in mind.",
-    },
-    author: "-Nafis Rahman",
-    avatars: [
-        { image: "/assets/images/avatar-testimonial-active.jpg", active: true },
-        { image: "/assets/images/avatar-testimonial-2.jpg", active: false },
-        { image: "/assets/images/avatar-testimonial-3.jpg", active: false },
+    testimonials: [
+        {
+            quote: {
+                text: "   Working with Yasir felt structured from day one. ",
+                highlight: "He thinks deeply",
+                rest: ", communicates clearly, and designs with both users and business goals in mind.",
+            },
+            author: "-Nafis Rahman",
+            avatars: [
+                { image: "/assets/images/avatar-testimonial-active.jpg", active: true },
+                { image: "/assets/images/avatar-testimonial-2.jpg", active: false },
+                { image: "/assets/images/avatar-testimonial-3.jpg", active: false },
+            ],
+        },
+        {
+            quote: {
+                text: "What stood out most was his clarity. Yasir does not ",
+                highlight: "just make things look better",
+                rest: " — he makes products feel smarter, smoother, and more thoughtful.",
+            },
+            author: "-Sarah Ahmed",
+            avatars: [
+                { image: "/assets/images/avatar-testimonial-2.jpg", active: true },
+                { image: "/assets/images/avatar-testimonial-active.jpg", active: false },
+                { image: "/assets/images/avatar-testimonial-3.jpg", active: false },
+            ],
+        },
+        {
+            quote: {
+                text: "Yasir has a rare ability to turn complex ",
+                highlight: "product ideas into experiences ",
+                rest: "that feel simple, clear, and incredibly easy to use.",
+            },
+            author: "- Michael Tanvir",
+            avatars: [
+                { image: "/assets/images/avatar-testimonial-3.jpg", active: true },
+                { image: "/assets/images/avatar-testimonial-active.jpg", active: false },
+                { image: "/assets/images/avatar-testimonial-2.jpg", active: false },
+            ],
+        },
     ],
     background: {
         image: "/assets/images/testimonials-grass-strip.png",
@@ -170,3 +199,40 @@ export const sectionNavItems: SectionNavItem[] = [
     { id: "services", label: "What I Do" },
     { id: "testimonials", label: "What I Bring" },
 ];
+
+export const projectsContent = {
+    badge: {
+        icon: "/assets/icons/icon-level-badge.svg", // your Badge component's icon key
+        label: "Proof, Not Promises",
+    },
+    heading: {
+        part1: "Designs That ",
+        highlight1: "Solved",
+        part2: " Real ",
+        highlight2: "Problems",
+    },
+    subtext:
+        "Behind every screen is a challenge that needed solving. These projects show how thoughtful design turns complexity into clarity.",
+    projects: [
+        {
+            title: "Agile Atlas",
+            tag: "Project Management Dashboard",
+            description:
+                "Managing projects should feel organized, but most tools feel like controlled chaos. Teams were wasting time navigating clutter instead of actually getting work done. I redesigned the experience with a clear structure, better hierarchy, and focused workflows. Every element was built to reduce friction and make task management feel effortless. Because if users have to \"figure it out,\" the design has already failed.",
+            quote:
+                "\"Messy tools waste time, clear tools save it. When work feels simple, teams move faster.\"",
+            image: "/assets/images/project-agile-atlas.png",
+            imagePosition: "left",
+        },
+        {
+            title: "E-commerce",
+            tag: "IT Admin Dashboard",
+            description:
+                "Managing an e-commerce backend should feel controlled, but most dashboards feel overwhelming. Admins were dealing with scattered data, unclear metrics, and too many decisions at once. I redesigned the dashboard with structured layouts, clear data hierarchy, and focused insights. Every section was built to make information easy to scan, understand, and act on quickly. Because when data is confusing, decisions become slow and risky.",
+            quote:
+                "\"Too much data overwhelms, clear data guides decisions. When everything makes sense, better choices happen faster.\"",
+            image: "/assets/images/project-ecommerce.png",
+            imagePosition: "right",
+        },
+    ],
+};

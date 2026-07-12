@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { ServiceCardProps } from "@/types";
+import GlitchSlitScanImage from "@/components/ui/GlitchSlitScanImage";
 
 export default function ServiceCard({ title, description, image, imagePosition }: ServiceCardProps) {
     const textBlock = (
@@ -15,7 +15,14 @@ export default function ServiceCard({ title, description, image, imagePosition }
 
     const imageBlock = (
         <div className="relative w-full flex-1 rounded-lg overflow-hidden">
-            <Image src={image} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" alt={title} fill className="object-cover" />
+            <GlitchSlitScanImage
+                src={image}
+                alt={title}
+                className="rounded-lg"
+                stripHeight={6}
+                maxShift={24}
+                rgbSplit={4}
+            />
         </div>
     );
 
