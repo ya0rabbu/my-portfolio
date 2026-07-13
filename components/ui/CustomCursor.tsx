@@ -101,7 +101,7 @@ export default function CustomCursor() {
                         src="/assets/images/avatar-cursor.png"
                         alt=""
                         fill
-                        sizes="48px"
+                        sizes="20px"
                         className="object-cover"
                     />
                 </div>
@@ -110,7 +110,7 @@ export default function CustomCursor() {
                         src="/assets/icons/hello-text.png"
                         alt="hello"
                         fill
-                        sizes="52px"
+                        sizes="40px"
                         className="object-contain"
                     />
                 </div>

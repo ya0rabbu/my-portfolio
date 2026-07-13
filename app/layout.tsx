@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={urbanist.variable}>
+    <html lang="en" className={urbanist.variable} suppressHydrationWarning>
       <body
         className="font-urbanist antialiased bg-[#F6F4F2] cursor-none"
         suppressHydrationWarning

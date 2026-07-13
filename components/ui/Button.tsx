@@ -3,7 +3,7 @@ import { ButtonProps } from "@/types";
 export default function Button({ label, variant, href, onClick }: ButtonProps) {
     if (variant === "primary") {
         const content = (
-            <span className="relative overflow-hidden rounded-lg px-5 py-4 inline-flex items-center justify-center bg-[#CD3234]/80 hover:bg-[#B82B2D] transition-colors">
+            <span className="relative overflow-hidden rounded-lg px-4 py-3 xs:px-5 xs:py-4 inline-flex items-center justify-center bg-[#CD3234]/80 hover:bg-[#B82B2D] transition-colors">
                 {/* Texture overlay layer */}
                 <span
                     className="absolute inset-0 opacity-100 mix-blend-multiply"
@@ -13,7 +13,7 @@ export default function Button({ label, variant, href, onClick }: ButtonProps) {
                         backgroundPosition: "center",
                     }}
                 />
-                <span className="relative z-10 text-[#F0EDE8] text-base font-semibold font-urbanist">
+                <span className="relative z-10 text-[#F0EDE8] text-sm xs:text-base font-semibold font-urbanist">
                     {label}
                 </span>
             </span>
@@ -23,7 +23,7 @@ export default function Button({ label, variant, href, onClick }: ButtonProps) {
 
     // Glass/secondary variant
     const glassStyle =
-        "px-5 py-4 rounded-lg backdrop-blur-md bg-white/10 border border-white/40 shadow-sm text-[#5E5E5E] text-base font-semibold font-urbanist transition-all duration-200";
+        "px-4 py-3 xs:px-5 xs:py-4 rounded-lg backdrop-blur-md bg-white/10 border border-white/40 shadow-sm text-[#5E5E5E] text-sm xs:text-base font-semibold font-urbanist transition-all duration-200";
 
     if (href) {
         return (

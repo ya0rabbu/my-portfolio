@@ -8,6 +8,8 @@
 }
 
 @theme {
+  --breakpoint-xs: 400px;
+  --breakpoint-3xl: 1921px;
   --font-cabinet: "Cabinet Grotesk", sans-serif;
   --font-urbanist: "Urbanist", sans-serif;
   --color-primary-red: #CD3234;
@@ -19,4 +21,10 @@
 
 * {
   cursor: none !important;
+}
+
+@media (min-width: 1921px) {
+  .max-w-\[1880px\] {
+    max-width: 100%;
+  }
 }

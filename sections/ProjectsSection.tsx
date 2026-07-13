@@ -23,13 +23,13 @@ export default function ProjectsSection() {
     };
 
     return (
-        <div className="w-full px-5 pt-8">
+        <div className="w-full px-3 sm:px-5 pt-6 sm:pt-8">
             <section
                 ref={sectionRef}
                 onMouseMove={handleMouseMove}
                 onMouseEnter={() => setActive(true)}
                 onMouseLeave={() => setActive(false)}
-                className="relative w-full border border-[#E7E1DD] px-6 md:px-[180px] py-16 md:py-24 rounded-[20px] max-w-[1880px] mx-auto overflow-hidden"
+                className="relative w-full border border-[#E7E1DD] px-4 sm:px-6 md:px-16 lg:px-24 xl:px-[180px] py-10 sm:py-16 md:py-24 rounded-[16px] sm:rounded-[20px] max-w-[1880px] mx-auto overflow-hidden"
             >
                 <div className="absolute inset-0 -z-10">
                     <HoverMaskReveal
@@ -45,12 +45,12 @@ export default function ProjectsSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="relative w-full flex flex-col items-center gap-12"
+                    className="relative w-full flex flex-col items-center gap-8 sm:gap-10 md:gap-12"
                 >
-                    <div className="w-full flex flex-col items-center gap-5 text-center">
+                    <div className="w-full flex flex-col items-center gap-3 sm:gap-4 md:gap-5 text-center">
                         <Badge icon={projectsContent.badge.icon} label={projectsContent.badge.label} variant="solid" />
 
-                        <h2 className="text-[32px] md:text-[44px] lg:text-[56px] font-bold font-cabinet leading-[1.24] text-[#161616] max-w-[588px]">
+                        <h2 className="text-[24px] xs:text-[28px] sm:text-[34px] md:text-[44px] lg:text-[56px] font-bold font-cabinet leading-[1.24] text-[#161616] max-w-[588px]">
                             {projectsContent.heading.part1}
                             <span className="text-[#161616]/40">{projectsContent.heading.highlight1}</span>
                             {projectsContent.heading.part2}
@@ -65,12 +65,12 @@ export default function ProjectsSection() {
                             </span>
                         </h2>
 
-                        <p className="max-w-[662px] text-[#5E5E5E] text-base md:text-xl font-urbanist font-normal leading-8">
+                        <p className="max-w-[662px] text-[#5E5E5E] text-sm sm:text-base md:text-xl font-urbanist font-normal leading-6 sm:leading-7 md:leading-8">
                             {projectsContent.subtext}
                         </p>
                     </div>
 
-                    <div className="w-full flex flex-col gap-8">
+                    <div className="w-full flex flex-col gap-6 sm:gap-8">
                         {projectsContent.projects.map((project, i) => (
                             <motion.div
                                 key={project.title}

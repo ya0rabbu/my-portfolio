@@ -2,12 +2,16 @@ import Image from "next/image";
 import { BadgeProps } from "@/types";
 
 export default function Badge({ icon, label, variant = "glass" }: BadgeProps) {
+    const iconClassName = "relative flex-shrink-0 w-[14px] h-[14px] md:w-4 md:h-4 lg:w-[18px] lg:h-[18px]";
+
     if (variant === "solid") {
         // About section — clean white card style
         return (
-            <div className="px-4 py-2 rounded-lg inline-flex items-center gap-2 w-fit bg-white border border-[#E7E1DD]">
-                <Image src={icon} alt="" width={20} height={20} className="flex-shrink-0" />
-                <span className="text-[#5E5E5E] text-base font-medium font-urbanist leading-5 whitespace-nowrap">
+            <div className="px-3 py-1.5 xs:px-4 xs:py-2 rounded-lg inline-flex items-center gap-1.5 xs:gap-2 w-fit bg-white border border-[#E7E1DD]">
+                <span className={iconClassName}>
+                    <Image src={icon} alt="" fill sizes="(min-width: 1024px) 18px, (min-width: 768px) 16px, 14px" className="object-contain" />
+                </span>
+                <span className="text-[#5E5E5E] text-xs md:text-sm lg:text-base font-medium font-urbanist leading-5 whitespace-nowrap">
                     {label}
                 </span>
             </div>
@@ -17,7 +21,7 @@ export default function Badge({ icon, label, variant = "glass" }: BadgeProps) {
     // Glass — Hero section
     return (
         <div
-            className="px-4 py-2 rounded-lg inline-flex justify-start items-center gap-2"
+            className="px-3 py-1.5 xs:px-4 xs:py-2 rounded-lg inline-flex justify-start items-center gap-1.5 xs:gap-2"
             style={{
                 backdropFilter: "blur(12px)",
                 WebkitBackdropFilter: "blur(12px)",
@@ -26,8 +30,10 @@ export default function Badge({ icon, label, variant = "glass" }: BadgeProps) {
                 boxShadow: "inset 0 1px 0 rgba(255,255,255,0.25), 0 1px 3px rgba(0,0,0,0.08)",
             }}
         >
-            <Image src={icon} alt="" width={20} height={20} className="flex-shrink-0" />
-            <span className="text-[#5E5E5E] text-base font-medium font-urbanist leading-5 whitespace-nowrap">
+            <span className={iconClassName}>
+                <Image src={icon} alt="" fill sizes="(min-width: 1024px) 18px, (min-width: 768px) 16px, 14px" className="object-contain" />
+            </span>
+            <span className="text-[#5E5E5E] text-xs md:text-sm lg:text-base font-medium font-urbanist leading-5 whitespace-nowrap">
                 {label}
             </span>
         </div>
