@@ -28,3 +28,49 @@
     max-width: 100%;
   }
 }
+
+/* Frosted Glass Effect */
+.glass-wrapper {
+  display: inline-block;
+  border-radius: 8px;
+  backdrop-filter: blur(20px);
+  background-color: #ffffff80;
+  box-shadow: 0 1px 12px #00000040;
+  border: 1px solid #ffffff4d;
+  padding: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px #00000059;
+}
+
+.glass-button {
+  border-radius: 6px;
+  backdrop-filter: blur(210px);
+  background-color: #ffffff73;
+  padding: 12px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  letter-spacing: 0.3px;
+}
+
+.glass-button:hover:not(:disabled) {
+  background-color: #ffffffb3;
+  box-shadow: 0 0 20px #ffffff26;
+  transform: scale(1.02);
+}
+
+.glass-button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.glass-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

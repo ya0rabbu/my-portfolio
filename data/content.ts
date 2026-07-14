@@ -65,6 +65,7 @@ export const aboutContent = {
             icon: "/assets/icons/icon-stat-focus.svg",
         },
     ],
+
 };
 
 // ============================================
@@ -235,4 +236,84 @@ export const projectsContent = {
             imagePosition: "right",
         },
     ],
+};
+
+export const socialLinks = [
+    { name: "Dribbble", href: "https://dribbble.com/yasirabedrabbu", icon: "/assets/icons/icon-dribbble.svg" },
+    { name: "LinkedIn", href: "https://linkedin.com/in/yasirabedrabbu", icon: "/assets/icons/icon-linkedin.svg" },
+    { name: "Behance", href: "https://behance.net/yasirabedrabbu", icon: "/assets/icons/icon-behance.svg" },
+    { name: "Pinterest", href: "https://pinterest.com/yasirabedrabbu", icon: "/assets/icons/icon-pinterest.svg" },
+];
+
+// Add these exports into your existing /data/content.ts file
+
+export const craftedByMeContent = {
+    badge: {
+        icon: "/assets/icons/icon-level-badge.svg",
+        label: "Crafted By Me",
+    },
+    heading: {
+        part1: "Helping You ",
+        highlight1: "Turn",
+        part2: " ",
+        highlight2: "Ideas",
+        part3: " Into Growth",
+    },
+    subtext:
+        "I design, build, and optimize digital systems that help businesses attract customers and scale consistently.",
+    items: [
+        {
+            icon: "/assets/icons/icon-ui-design.svg",
+            title: "UI Design That Feels Effortless",
+            description:
+                "I design clean, modern interfaces that reduce friction, improve clarity, and make every interaction feel natural.",
+        },
+        {
+            icon: "/assets/icons/icon-ux-solutions.svg",
+            title: "UX Solutions For Real Problems",
+            description:
+                "I turn complex requirements into practical user flows that help people complete tasks with less confusion.",
+        },
+        {
+            icon: "/assets/icons/icon-responsive-design.svg",
+            title: "Responsive Design Across Every Screen",
+            description:
+                "From desktop to mobile, I create flexible experiences that stay smooth, usable, and visually consistent everywhere.",
+        },
+        {
+            icon: "/assets/icons/icon-design-systems.svg",
+            title: "Design Systems That Scale Cleanly",
+            description:
+                "I build structured components and style guides that keep products consistent, efficient, and easy to grow.",
+        },
+        {
+            icon: "/assets/icons/icon-developer-handoff.svg",
+            title: "Developer Handoff Without The Drama",
+            description:
+                "I prepare organized, pixel-perfect design files so developers can build faster without guessing every detail.",
+        },
+        {
+            icon: "/assets/icons/icon-product-thinking.svg",
+            title: "Product Thinking Backed By Logic",
+            description:
+                "I balance user needs, business goals, and technical feasibility to design solutions that actually make sense.",
+        },
+    ],
+};
+
+export const ctaContent = {
+    badge: {
+        icon: "/assets/icons/icon-level-badge.svg",
+        label: "Let's Build Something Great",
+    },
+    heading: {
+        part1: "Got an idea? Let's ",
+        highlight1: "turn it ",
+        part2: "into reality ",
+        highlight2: "together!",
+    },
+    subtext:
+        "Good products don't start with big budgets they start with clarity, structure, and the right thinking. If you're serious about building something meaningful, let's shape it together.",
+    ctaPrimary: "Start A Conversation",
+    ctaSecondary: "Contract Now",
 };

@@ -2,18 +2,20 @@ import Image from "next/image";
 import { BadgeProps } from "@/types";
 
 export default function Badge({ icon, label, variant = "glass" }: BadgeProps) {
-    const iconClassName = "relative flex-shrink-0 w-[14px] h-[14px] md:w-4 md:h-4 lg:w-[18px] lg:h-[18px]";
+    const iconClassName = "relative flex-shrink-0 w-[18px] h-[18px]";
+    // Figma spec: font-size 16px, font-weight 500, line-height 19.84px, letter-spacing 0.64px
+    // padding: 16px left/right, 8px top/bottom (fixed, not responsive)
+    const labelClassName =
+        "text-[#5E5E5E] text-base font-medium font-urbanist leading-[19.84px] tracking-[0.64px] whitespace-nowrap";
 
     if (variant === "solid") {
-        // About section — clean white card style
+        // About / general sections — clean white card style
         return (
-            <div className="px-3 py-1.5 xs:px-4 xs:py-2 rounded-lg inline-flex items-center gap-1.5 xs:gap-2 w-fit bg-white border border-[#E7E1DD]">
+            <div className="px-4 py-2 rounded-lg inline-flex items-center gap-2 w-fit bg-white border border-[#E7E1DD]">
                 <span className={iconClassName}>
-                    <Image src={icon} alt="" fill sizes="(min-width: 1024px) 18px, (min-width: 768px) 16px, 14px" className="object-contain" />
+                    <Image src={icon} alt="" fill sizes="18px" className="object-contain" />
                 </span>
-                <span className="text-[#5E5E5E] text-xs md:text-sm lg:text-base font-medium font-urbanist leading-5 whitespace-nowrap">
-                    {label}
-                </span>
+                <span className={labelClassName}>{label}</span>
             </div>
         );
     }
@@ -21,7 +23,7 @@ export default function Badge({ icon, label, variant = "glass" }: BadgeProps) {
     // Glass — Hero section
     return (
         <div
-            className="px-3 py-1.5 xs:px-4 xs:py-2 rounded-lg inline-flex justify-start items-center gap-1.5 xs:gap-2"
+            className="px-4 py-2 rounded-lg inline-flex justify-start items-center gap-2"
             style={{
                 backdropFilter: "blur(12px)",
                 WebkitBackdropFilter: "blur(12px)",
@@ -31,11 +33,9 @@ export default function Badge({ icon, label, variant = "glass" }: BadgeProps) {
             }}
         >
             <span className={iconClassName}>
-                <Image src={icon} alt="" fill sizes="(min-width: 1024px) 18px, (min-width: 768px) 16px, 14px" className="object-contain" />
+                <Image src={icon} alt="" fill sizes="18px" className="object-contain" />
             </span>
-            <span className="text-[#5E5E5E] text-xs md:text-sm lg:text-base font-medium font-urbanist leading-5 whitespace-nowrap">
-                {label}
-            </span>
+            <span className={labelClassName}>{label}</span>
         </div>
     );
 }

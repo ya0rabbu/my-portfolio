@@ -4,14 +4,15 @@ import { motion } from "framer-motion";
 import Badge from "@/components/ui/Badge";
 import { aboutContent } from "@/data/content";
 import PortraitCycler from "@/components/ui/PortraitCycler";
+import SocialLinks from "@/components/ui/SocialLinks";
 
 export default function AboutSection() {
     return (
         <section id="about" className="relative w-full overflow-hidden">
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
                 className="relative z-10 w-full max-w-[1320px] mx-auto flex flex-col lg:flex-row items-center gap-8 sm:gap-10 lg:gap-12 px-4 sm:px-6 py-12 sm:py-16 lg:py-20"
             >
@@ -90,17 +91,19 @@ export default function AboutSection() {
                 </div>
 
                 {/* ── Right Column — Portrait ── */}
-                <motion.div
-                    animate={{ y: [0, -14, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="w-full lg:flex-1 h-[320px] xs:h-[380px] sm:h-[450px] md:h-[550px] lg:h-[700px] relative rounded-xl border border-[#E7E1DD] overflow-hidden"
-                >
-                    <PortraitCycler
-                        src={aboutContent.portrait}
-                        alt="Yasir Abed Rabbu — Product Designer"
-                    />
-                </motion.div>
+                <div className="w-full lg:flex-1 flex items-center gap-4">
+                    {/* Social links - only visible on desktop, left of portrait */}
+                    <div className="hidden lg:block">
+                        <SocialLinks />
+                    </div>
 
+                    <div className="w-full h-[320px] xs:h-[380px] sm:h-[450px] md:h-[550px] lg:h-[700px] relative rounded-xl border border-[#E7E1DD] overflow-hidden">
+                        <PortraitCycler
+                            src={aboutContent.portrait}
+                            alt="Yasir Abed Rabbu — Product Designer"
+                        />
+                    </div>
+                </div>
             </motion.div>
         </section>
     );
