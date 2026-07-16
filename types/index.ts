@@ -1,8 +1,11 @@
 export interface ButtonProps {
     label: string;
-    variant: "primary" | "glass";
+    variant: "primary" | "primary2" | "forctasection" | "glass";
     href?: string;
     onClick?: () => void;
+    className?: string;
+    style?: React.CSSProperties;
+    textColor?: string;
 }
 
 export interface BadgeProps {

@@ -8,241 +8,158 @@ interface SplashScreenProps {
     children: React.ReactNode;
 }
 
-const STRIP_COUNT = 4;
-const NAME = "YASIR ABED RABBU";
-const TAGLINE = "Product Designer — Creating User-Friendly Products Amid Complexity.";
-
-// ASCII loader — a grid of characters that "fills in" left to right based on progress
-const ASCII_COLS = 28;
-const ASCII_ROWS = 6;
-const ASCII_CHARS = ["·", ":", "+", "*", "#", "@"];
-
-function AsciiLoader({ progressRef }: { progressRef: React.MutableRefObject<number> }) {
-    const cellRefs = useRef<(HTMLSpanElement | null)[]>([]);
-    const rafRef = useRef<number>(0);
-
-    useEffect(() => {
-        const total = ASCII_COLS * ASCII_ROWS;
-        const loop = () => {
-            const p = progressRef.current; // 0..1
-            for (let i = 0; i < total; i++) {
-                const col = i % ASCII_COLS;
-                const colProgress = col / ASCII_COLS;
-                const el = cellRefs.current[i];
-                if (!el) continue;
-
-                let charIndex = 0;
-                if (colProgress < p) {
-                    const local = Math.min(1, (p - colProgress) * 6);
-                    charIndex = Math.floor(local * (ASCII_CHARS.length - 1));
-                }
-                el.textContent = ASCII_CHARS[charIndex];
-                el.style.opacity = charIndex === 0 ? "0.15" : "1";
-            }
-            rafRef.current = requestAnimationFrame(loop);
-        };
-        rafRef.current = requestAnimationFrame(loop);
-        return () => cancelAnimationFrame(rafRef.current);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    return (
-        <div
-            className="grid font-cabinet font-bold select-none"
-            style={{
-                gridTemplateColumns: `repeat(${ASCII_COLS}, 1fr)`,
-                gap: "2px",
-                color: "var(--splash-fg, #161616)",
-            }}
-            aria-hidden="true"
-        >
-            {Array.from({ length: ASCII_COLS * ASCII_ROWS }).map((_, i) => (
-                <span
-                    key={i}
-                    ref={(el) => { cellRefs.current[i] = el; }}
-                    className="text-[10px] md:text-[13px] leading-none text-center"
-                >
-                    ·
-                </span>
-            ))}
-        </div>
-    );
-}
+const TAGLINE = "Product Designer";
+const SUBTITLE = "Creating user-friendly products amid complexity.";
 
 export default function SplashScreen({ children }: SplashScreenProps) {
-    const nameRef = useRef<HTMLDivElement>(null);
+    const overlayRef = useRef<HTMLDivElement>(null);
+    const logoRef = useRef<HTMLDivElement>(null);
     const taglineRef = useRef<HTMLParagraphElement>(null);
-    const asciiWrapRef = useRef<HTMLDivElement>(null);
+    const subtitleRef = useRef<HTMLParagraphElement>(null);
+    const barFillRef = useRef<HTMLDivElement>(null);
     const percentRef = useRef<HTMLSpanElement>(null);
-    const introStageRef = useRef<HTMLDivElement>(null);
+    const lineTopRef = useRef<HTMLDivElement>(null);
+    const lineBottomRef = useRef<HTMLDivElement>(null);
     const contentBlurRef = useRef<HTMLDivElement>(null);
-    const stripsRef = useRef<(HTMLDivElement | null)[]>([]);
-    const progress = useRef(0);
     const [isDone, setIsDone] = useState(false);
 
     useEffect(() => {
         const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        if (prefersReduced) {
-            setIsDone(true);
-            return;
-        }
+        if (prefersReduced) { setIsDone(true); return; }
 
+        const tl = gsap.timeline({ onComplete: () => setIsDone(true) });
         const percentProxy = { val: 0 };
-        const tl = gsap.timeline({
-            onComplete: () => setIsDone(true),
-        });
 
-        // 1 — Name fades/scales in
-        tl.fromTo(
-            nameRef.current,
-            { opacity: 0, y: 16, scale: 0.98 },
-            { opacity: 1, y: 0, scale: 1, duration: 1.0, ease: "power2.out" }
-        );
-
-        // hold on name
-        tl.to({}, { duration: 0.6 });
-
-        // 2 — Tagline fades in below
-        tl.fromTo(
-            taglineRef.current,
-            { opacity: 0, y: 10 },
-            { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }
-        );
-
-        // hold on intro
-        tl.to({}, { duration: 0.9 });
-
-        // 3 — Intro block exits, ASCII loader enters
-        tl.to(introStageRef.current, {
+        // Initial state
+        gsap.set([logoRef.current, taglineRef.current, subtitleRef.current, lineTopRef.current, lineBottomRef.current], {
             opacity: 0,
-            y: -14,
-            duration: 0.6,
-            ease: "power2.inOut",
+        });
+        gsap.set(logoRef.current, { y: 20 });
+        gsap.set(taglineRef.current, { y: 10 });
+        gsap.set(subtitleRef.current, { y: 8 });
+        gsap.set(lineTopRef.current, { scaleX: 0, transformOrigin: "left" });
+        gsap.set(lineBottomRef.current, { scaleX: 0, transformOrigin: "right" });
+
+        // 1 — Lines draw in
+        tl.to([lineTopRef.current, lineBottomRef.current], {
+            scaleX: 1, opacity: 1, duration: 0.8, ease: "power3.out", stagger: 0.1,
         });
 
-        tl.fromTo(
-            asciiWrapRef.current,
-            { opacity: 0, y: 10 },
-            { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-            "-=0.2"
-        );
+        // 2 — Name appears
+        tl.to(logoRef.current, {
+            y: 0, opacity: 1, duration: 0.7, ease: "power3.out",
+        }, "-=0.4");
 
-        // 4 — Progress counts 0 → 100, drives ASCII fill
-        tl.to(
-            percentProxy,
-            {
-                val: 100,
-                duration: 2.6,
-                ease: "power1.inOut",
-                onUpdate: () => {
-                    progress.current = percentProxy.val / 100;
-                    if (percentRef.current) {
-                        percentRef.current.textContent = String(Math.round(percentProxy.val));
-                    }
-                },
+        // 3 — Tagline
+        tl.to(taglineRef.current, {
+            y: 0, opacity: 1, duration: 0.5, ease: "power2.out",
+        }, "-=0.2");
+
+        // 4 — Subtitle
+        tl.to(subtitleRef.current, {
+            y: 0, opacity: 1, duration: 0.5, ease: "power2.out",
+        }, "-=0.3");
+
+        // hold
+        tl.to({}, { duration: 0.3 });
+
+        // 5 — Progress bar
+        tl.to(percentProxy, {
+            val: 100,
+            duration: 1.8,
+            ease: "power1.inOut",
+            onUpdate: () => {
+                const v = Math.round(percentProxy.val);
+                if (percentRef.current) percentRef.current.textContent = `${v}`;
+                if (barFillRef.current) barFillRef.current.style.width = `${v}%`;
             },
-            "+=0.1"
-        );
+        }, "+=0.1");
 
         // hold at 100
-        tl.to({}, { duration: 0.5 });
+        tl.to({}, { duration: 0.3 });
 
-        // 5 — ASCII loader exits
-        tl.to(asciiWrapRef.current, {
-            opacity: 0,
-            y: -10,
-            duration: 0.6,
-            ease: "power2.inOut",
+        // 6 — Everything fades + slides up, overlay collapses
+        tl.to(contentBlurRef.current, {
+            opacity: 0, duration: 0.5, ease: "power2.out",
         });
 
-        // fade dim/blur off the live hero underneath
-        tl.to(
-            contentBlurRef.current,
-            { opacity: 0, duration: 1.0, ease: "power2.out" },
-            "-=0.2"
-        );
+        tl.to(overlayRef.current, {
+            yPercent: -100,
+            duration: 1,
+            ease: "power3.inOut",
+        }, "-=0.2");
 
-        // 6 — strips peel away, revealing the page
-        tl.to(
-            stripsRef.current,
-            {
-                yPercent: (i) => (i % 2 === 0 ? -100 : 100),
-                duration: 1.4,
-                ease: "power2.inOut",
-                stagger: 0.15,
-            },
-            "-=0.3"
-        );
-
-        return () => {
-            tl.kill();
-        };
+        return () => { tl.kill(); };
     }, []);
 
     return (
         <div className="relative w-full">
-            {/* hero content — live in the DOM from the start */}
+            {/* Blur behind content while loading */}
             <div
                 ref={contentBlurRef}
                 className="fixed inset-0 z-[900] pointer-events-none"
-                style={{ backdropFilter: "blur(6px)", backgroundColor: "rgba(243,237,227,0.4)" }}
+                style={{ backdropFilter: "blur(12px)", backgroundColor: "rgba(246,244,242,0.6)" }}
             />
+
             {children}
 
-            {/* splash overlay */}
             {!isDone && (
-                <div className="fixed inset-0 z-[999] flex">
-                    {Array.from({ length: STRIP_COUNT }).map((_, i) => (
-                        <div
-                            key={i}
-                            ref={(el) => { stripsRef.current[i] = el; }}
-                            className="h-full"
-                            style={{
-                                width: `${100 / STRIP_COUNT}%`,
-                                backgroundColor: "var(--splash-bg, #F3EDE3)",
-                            }}
-                        />
-                    ))}
+                <div ref={overlayRef} className="fixed inset-0 z-[999] flex items-center justify-center" style={{ backgroundColor: "#F3EDE3" }}>
 
-                    <div
-                        role="status"
-                        aria-live="polite"
-                        aria-label="Loading page"
-                        className="absolute inset-0 z-[1000] flex flex-col items-center justify-center gap-6 px-6 pointer-events-none"
-                    >
-                        {/* Stage 1+2: name + tagline */}
-                        <div ref={introStageRef} className="flex flex-col items-center gap-4 text-center">
-                            <div
-                                ref={nameRef}
-                                className="font-cabinet font-bold leading-none tracking-tight text-[9vw] xs:text-[7vw] sm:text-[5vw] md:text-[3.2vw]"
-                                style={{ color: "var(--splash-fg, #161616)", opacity: 0 }}
+                    {/* Thin decorative lines */}
+                    <div ref={lineTopRef} className="absolute top-[72px] left-[60px] right-[60px] h-[1px] bg-[#D6CFC6]" />
+                    <div ref={lineBottomRef} className="absolute bottom-[72px] left-[60px] right-[60px] h-[1px] bg-[#D6CFC6]" />
+
+                    {/* Corner labels */}
+                    <span className="absolute top-[48px] left-[60px] font-urbanist text-[11px] tracking-[0.2em] text-[#A09890] uppercase">Portfolio</span>
+                    <span className="absolute top-[48px] right-[60px] font-urbanist text-[11px] tracking-[0.2em] text-[#A09890] uppercase">2026</span>
+
+                    {/* Center content */}
+                    <div className="flex flex-col items-center gap-6 select-none pointer-events-none">
+
+                        {/* Name */}
+                        <div ref={logoRef} className="items-center">
+                            <span
+                                className="font-cabinet font-bold tracking-[-0.02em] leading-[1.24] letter-spacing-[12px]"
+                                style={{ fontSize: "56px", color: "#161616" }}
                             >
-                                {NAME}
-                            </div>
-                            <p
-                                ref={taglineRef}
-                                className="font-urbanist text-sm md:text-base max-w-[420px]"
-                                style={{ color: "var(--splash-fg-muted, #6b6459)", opacity: 0 }}
+                                Yasir
+                            </span>
+                            <span
+                                className="font-cabinet font-bold tracking-[-0.02em] leading-[1.24]"
+                                style={{ fontSize: "56px", color: "#CD3234" }}
                             >
-                                {TAGLINE}
-                            </p>
+                                Abed
+                            </span>
+                            <span
+                                className="font-cabinet font-bold tracking-[-0.02em] leading-[1.24]"
+                                style={{ fontSize: "56px", color: "#16161665/40" }}
+                            >
+                                Rabbu
+                            </span>
+
+
                         </div>
 
-                        {/* Stage 3: ASCII loader */}
-                        <div
-                            ref={asciiWrapRef}
-                            className="flex flex-col items-center gap-3"
-                            style={{ opacity: 0 }}
-                        >
-                            <div className="w-[240px] xs:w-[300px] sm:w-[360px]">
-                                <AsciiLoader progressRef={progress} />
+                        {/* Tagline */}
+                        <p ref={taglineRef} className="font-urbanist font-medium text-[#161616] tracking-[0.25em] capitalize text-xs sm:text-sm">
+                            {TAGLINE}
+                        </p>
+
+                        {/* Subtitle */}
+                        <p ref={subtitleRef} className="font-urbanist font-normal text-[#8C847C] text-center text-sm max-w-[320px]">
+                            {SUBTITLE}
+                        </p>
+
+                        {/* Progress */}
+                        <div className="flex flex-col items-center gap-3 w-[220px] sm:w-[300px]">
+                            <div className="w-full h-[1px] bg-[#E0D9D0] overflow-hidden">
+                                <div ref={barFillRef} className="h-full bg-[#161616]" style={{ width: "0%" }} />
                             </div>
-                            <span
-                                className="font-cabinet font-medium text-xs tracking-[0.15em]"
-                                style={{ color: "var(--splash-fg-muted, #6b6459)" }}
-                            >
-                                <span ref={percentRef}>0</span>%
-                            </span>
+                            <div className="w-full flex justify-between">
+                                <span className="font-urbanist text-[10px] tracking-[0.2em] text-[#A09890] capitalize">Loading</span>
+                                <span ref={percentRef} className="font-cabinet font-bold text-[11px] text-[#161616]">0</span>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -8,6 +8,11 @@ interface ParticlesBackgroundProps {
     color?: string;
 }
 
+function randomFromSeed(seed: number) {
+    const value = Math.sin(seed) * 10000;
+    return value - Math.floor(value);
+}
+
 /**
  * Lightweight floating "3D-ish" particle background — small dots that
  * drift up and sideways with slightly randomized timing, sitting behind
@@ -16,16 +21,20 @@ interface ParticlesBackgroundProps {
 export default function ParticlesBackground({ count = 26, color = "#70712C" }: ParticlesBackgroundProps) {
     const particles = useMemo(
         () =>
-            Array.from({ length: count }).map((_, i) => ({
-                id: i,
-                left: Math.random() * 100,
-                top: Math.random() * 100,
-                size: 2 + Math.random() * 4,
-                duration: 6 + Math.random() * 8,
-                delay: Math.random() * 6,
-                drift: (Math.random() - 0.5) * 40,
-                opacity: 0.15 + Math.random() * 0.35,
-            })),
+            Array.from({ length: count }).map((_, i) => {
+                const seed = i + 1;
+
+                return {
+                    id: i,
+                    left: randomFromSeed(seed * 11) * 100,
+                    top: randomFromSeed(seed * 17) * 100,
+                    size: 2 + randomFromSeed(seed * 23) * 4,
+                    duration: 6 + randomFromSeed(seed * 31) * 8,
+                    delay: randomFromSeed(seed * 41) * 6,
+                    drift: (randomFromSeed(seed * 47) - 0.5) * 40,
+                    opacity: 0.15 + randomFromSeed(seed * 53) * 0.35,
+                };
+            }),
         [count]
     );
 

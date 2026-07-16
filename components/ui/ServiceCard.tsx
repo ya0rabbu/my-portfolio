@@ -1,31 +1,38 @@
 import { ServiceCardProps } from "@/types";
-import LiquidDistortImage from "@/components/ui/LiquidDistortImage";
+import Image from "next/image";
 
 export default function ServiceCard({ title, description, image, imagePosition }: ServiceCardProps) {
     const textBlock = (
-        <div className="w-full flex flex-col items-start gap-2 xs:gap-3 shrink-0">
-            <h3 className="w-full text-2xl md:text-[32px] font-medium font-cabinet leading-[1.24] text-[#161616]">
+        <div className="w-full flex flex-col items-start gap-[14.4px] shrink-0">
+            <h3
+                className="w-full font-cabinet font-medium text-[#161616]"
+                style={{ fontSize: "clamp(20px, 2vw, 32px)", lineHeight: "39.68px" }}
+            >
                 {title}
             </h3>
-            <p className="w-full text-sm md:text-lg font-urbanist leading-[1.44] text-[#5E5E5E]">
+            <p
+                className="w-full font-urbanist font-normal text-[#5E5E5E]"
+                style={{ fontSize: "16px", lineHeight: "23.04px" }}
+            >
                 {description}
             </p>
         </div>
     );
 
     const imageBlock = (
-        <div className="relative w-full flex-1 min-h-[180px] xs:min-h-[220px] sm:min-h-[260px] rounded-lg overflow-hidden">
-            <LiquidDistortImage
+        <div className="relative w-full overflow-hidden rounded-[8px] shrink-0" style={{ height: "354.67px" }}>
+            <Image
                 src={image}
                 alt={title}
-                className="rounded-lg"
-                strength={0.04}
+                fill
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
         </div>
     );
 
     return (
-        <div className="h-full min-h-[380px] xs:min-h-[420px] md:min-h-[524px] lg:min-h-[628px] w-full p-4 xs:p-6 md:p-7 bg-[#FAF9F8] rounded-2xl border border-[#E7E1DD] flex flex-col items-stretch gap-3 xs:gap-4 md:gap-5">
+        <div className="group h-full w-full p-6 bg-[#FAF9F8] overflow-hidden rounded-[12px] outline outline-[1.2px] outline-[#E7E1DD] -outline-offset-[1.2px] flex flex-col items-center gap-4 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(22,22,22,0.08)]">
             {imagePosition === "top" ? (
                 <>
                     {imageBlock}

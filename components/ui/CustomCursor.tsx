@@ -7,12 +7,12 @@ export default function CustomCursor() {
     const cursorRef = useRef<HTMLDivElement>(null);
     const [isHovering, setIsHovering] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
-    const [isTouch, setIsTouch] = useState(false);
+    const [isTouch] = useState(
+        () => typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches
+    );
 
     useEffect(() => {
-        const touch = window.matchMedia("(pointer: coarse)").matches;
-        setIsTouch(touch);
-        if (touch) return;
+        if (isTouch) return;
 
         const onMove = (e: MouseEvent) => {
             if (!isVisible) setIsVisible(true);
@@ -33,8 +33,7 @@ export default function CustomCursor() {
             window.removeEventListener("mousemove", onMove);
             window.removeEventListener("mouseover", onOver);
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [isTouch, isVisible]);
 
     if (isTouch) return null;
 

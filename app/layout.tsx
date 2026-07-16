@@ -1,8 +1,8 @@
 import "./globals.css";
 import { Urbanist } from "next/font/google";
 import CustomCursor from "@/components/ui/CustomCursor";
-// NOTE: make sure CustomCursor.tsx (the dot+ring component from earlier)
-// actually exists at components/ui/CustomCursor.tsx
+import SplashScreen from "@/components/layout/SplashScreen";
+import StackingWrapper from "@/components/layout/StackingWrapper";
 
 const urbanist = Urbanist({
   subsets: ["latin"],

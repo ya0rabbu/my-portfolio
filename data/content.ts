@@ -1,4 +1,5 @@
 import { SectionNavItem } from "@/types";
+import { Signature } from "lucide-react";
 
 // ============================================
 // HERO SECTION
@@ -29,44 +30,28 @@ export const aboutContent = {
         label: "The Designer Behind the Work",
     },
     heading: {
-        line1Start: "I Think in ",
-        highlight1: "Systems.",
-        line1Mid: " I ",
-        highlight2: "Design",
-        line1End: " for People.",
+        line1Start: "Designing ",
+        highlight1: "experiences",
+        line1Mid: " that solve real ",
+        highlight2: "problems.",
     },
+    subtext:
+        "Turning complex problems into simple, human experiences across healthcare, fintech, and SaaS.",
     body: {
-        p1Start: "Most design problems aren't really ",
-        bold1: "Design Problems",
-        p1End: " — they're clarity problems. Someone didn't think hard enough about what the user actually needs to do next.",
-        p2: "That's where I come in.",
-        p3Start: "With a background in ",
-        bold2: "Computer Science",
-        p3End: " and hands-on experience across healthcare, fintech, and SaaS at Softvance, I bring both technical understanding and human empathy to every project. I don't just make things look good — I make them work in the real world, for real users, under real constraints.",
-        p4Start: "When I'm not designing, I'm studying systems — how products grow, how teams collaborate, and how great design becomes a ",
-        bold3: "business advantage",
-        p4End: ".",
+        heading1: "Most design problems aren't really design problems.",
+        p1: "they're clarity problems. Someone didn't think hard enough about what the user actually needs to do next. That's the gap I've always been drawn to filling.",
+        heading2: "I work across healthcare, fintech, and SaaS,",
+        p2: "bringing technical understanding and genuine empathy to every project. I don't just make things look good — I make them work in the real world, for real users, under real constraints.",
+        heading3: "I'm a bit obsessive about the details most people skip,",
+        p3: "but I think that's what separates good design from great design. Clients tend to notice that kind of care — and it's usually what keeps them coming back.",
     },
     portrait: "/assets/images/portrait-yasir-abed-rabbu.png",
-    stats: [
-        {
-            value: "2+",
-            label: "Years of Product Design Experience",
-            icon: "/assets/icons/icon-stat-years.svg",
-        },
-        {
-            value: "3",
-            label: "Industries - Healthcare, Fintech, SaaS",
-            icon: "/assets/icons/icon-stat-industries.svg",
-        },
-        {
-            value: "100%",
-            label: "Focus on Usability + Outcomes",
-            icon: "/assets/icons/icon-stat-focus.svg",
-        },
-    ],
-
+    signature: {
+        image: "/assets/images/signature.png",
+    },
+    // ... stats, socialLinks same thakbe
 };
+
 
 // ============================================
 // SERVICES / "WHAT I BRING" SECTION
@@ -243,6 +228,7 @@ export const socialLinks = [
     { name: "LinkedIn", href: "https://linkedin.com/in/yasirabedrabbu", icon: "/assets/icons/icon-linkedin.svg" },
     { name: "Behance", href: "https://behance.net/yasirabedrabbu", icon: "/assets/icons/icon-behance.svg" },
     { name: "Pinterest", href: "https://pinterest.com/yasirabedrabbu", icon: "/assets/icons/icon-pinterest.svg" },
+    { name: "   X", href: "https://x.com/Ya_Rabbu", icon: "/assets/icons/icon-x.svg" },
 ];
 
 // Add these exports into your existing /data/content.ts file
@@ -315,5 +301,5 @@ export const ctaContent = {
     subtext:
         "Good products don't start with big budgets they start with clarity, structure, and the right thinking. If you're serious about building something meaningful, let's shape it together.",
     ctaPrimary: "Start A Conversation",
-    ctaSecondary: "Contract Now",
+    ctaSecondary: "Contact Me",
 };
